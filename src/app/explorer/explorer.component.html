@@ -1,10 +1,11 @@
 <div class="container">
-    <div cdkDropListGroup>
+    <div cdkDropListGroup oncontextmenu="return false">
         @for (list of explorerlist; track idx; let idx = $index){
             <div class="example-container">
                 <div class="border">
                     <div class="folderico">
-                        <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-5.png" alt="" width="200" height="200">
+                        <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-5.png" 
+                        alt="" width="200" height="200" (auxclick)="addFolder(list.id,idx)">
                     </div>
                 <h2>{{list.name}}</h2>
             </div>          
@@ -16,17 +17,19 @@
                 (cdkDropListDropped)="drop($event)">
                 @for (folder of list.list; track idx; let idx = $index) {
                     <div class="folderico"></div>
-                    <div class="example-box" cdkDrag>
+                    <div class="example-box" cdkDrag (dblclick)="editFolder(list.id,idx)">
                         <img src="https://win98icons.alexmeub.com/icons/png/directory_open_cool-4.png" alt="" width="20" height="20">
                         @if(currentEditFolderListId == list.id && currentEditFolderIdx == idx){
                             <input class="folder-inp" matInput [(ngModel)]="list.list[idx]" type="text" placeholder="Folder Name" autofocus>
+                            @if (folder.length === 0){
                             <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty_cool-4.png" alt="" width="20" height="20"
                             (dblclick)="deleteFolder(list.id,idx)">
+                            }
                             <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-1.png" alt="" width="20" height="20"
                             (click)="saveValue(list.id,idx)">
                         }@else {
-                            <h1 class="folderName" (dblclick)="editFolder(list.id,idx)">
-                                {{folder}}
+                            <h1 class="folderName">
+                                <span>{{folder}}</span>
                             </h1>
                         }
                     </div>

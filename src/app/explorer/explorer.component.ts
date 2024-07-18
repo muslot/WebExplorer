@@ -50,14 +50,18 @@ export class ExplorerComponent implements OnInit {
 
  
 
-  addFolder(){
-
+  addFolder(id:number,idx:number){
+    this.explorerlist[idx].list.push("");
+    this.editFolder(id, this.explorerlist[idx].list.length - 1);
   }
 
   editFolder(id:number,idx:number){
     let listIndex = this.explorerlist.findIndex((list) => list.id === id);
     if (this.currentEditFolderListId == id && this.currentEditFolderIdx == idx)
     {
+      if(this.explorerlist[listIndex].list[idx].length === 0){
+        this.deleteFolder(id, idx);
+      }
       return this.updateFolder(this.explorerlist);
     }
 
@@ -95,7 +99,9 @@ export class ExplorerComponent implements OnInit {
 
   deleteFolder(id:number,idx:number){
     let listIndex = this.explorerlist.findIndex((list) => list.id === id);
-    this.explorerlist[listIndex].list.splice(idx,1);
-    this.updateFolder(this.explorerlist);
+    if(this.prevValue?.trim().length == 0){
+      this.explorerlist[listIndex].list.splice(idx,1);
+      this.updateFolder(this.explorerlist);
+    }
   }
 }

@@ -3,7 +3,8 @@
     "id": 0,
     "name": "Black Metal",
     "list": [
-      "123"
+      "123",
+      "New Folder"
     ]
   },
   {
@@ -18,7 +19,9 @@
     "id": 3,
     "name": "DopeBear",
     "list": [
-      "DopeBear"
+      "DopeBear",
+      "New Folder",
+      "New Folder"
     ]
   }
 ]

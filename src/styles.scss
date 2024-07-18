@@ -4,7 +4,8 @@ html, body {
     overflow: hidden;
  }
 body { 
-    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: #008080;
  }
 
@@ -32,9 +33,22 @@ body {
     cursor: context-menu;
  }
 
-input{
+ h3{
+   color: white;
+   font-family: none;
+   margin: 0;
+   font-size:large;
+ }
+ .btn-panel{
+   display: flex;
+   justify-content: left;
+   align-items: center;
+   flex-direction: column;
+   margin-bottom: 50px;
+ }
+  input{
    border: none;
    color: black;
    font-family: none;
    font-size: 15px;
-}
+ }
